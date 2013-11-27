@@ -1,0 +1,56 @@
+html, body{
+  font-family: "Arial";
+}
+
+#autocomplete{
+  width: 250px;
+}
+
+.autocomplete-custom{
+  min-width: 200px;
+  display: block;
+}
+.autocomplete-custom input{
+  width: 100%;
+}
+.autocomplete-custom .box-result{
+  width: 100%; min-height: 150px;
+  position: relative;
+  display: none;
+  z-index: 1000;
+}
+.autocomplete-custom .box-result .box-line{
+  width: 100%; 
+  border-bottom: 1px solid #dddddd; 
+  border-left: 1px solid #dddddd; 
+  border-right: 1px solid #dddddd; 
+  float: left;
+}
+.autocomplete-custom .box-result .box-line:hover{
+  border-bottom: 1px solid #f7a85d; 
+  border-left: 1px solid #f7a85d; 
+  border-right: 1px solid #f7a85d; 
+  background-color: #f7d7b9;
+  cursor: pointer;
+}
+.autocomplete-custom .box-result .box-line .img{
+  width: 20%;
+  margin-right:5%;
+  float:left;
+}
+.autocomplete-custom .box-result .box-line .img img{
+  width: 45px; height: 45px; 
+  margin: 2px 0 0 4px;
+}
+.autocomplete-custom .box-result .box-line .info{
+  width: 75%;
+  padding-top: 2px;
+  font-size: 13px; font-weight: bold;
+  float:left;
+}
+.autocomplete-custom .box-result .box-line .info span{
+  font-size: 11px;
+  color: #666;
+  font-style: italic; font-weight: normal;
+  display: inherit;
+}
