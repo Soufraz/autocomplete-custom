@@ -10,10 +10,9 @@ $.fn.autocomplete = function(options) {
 
   $(_term).keyup(function(){
 
-    $(_god).remove();
-
     if(options.urlToGetData){
-      _getDataRemote(options.urlToGetData);
+      options.term = $(_term).val();
+      _getDataRemote(options.urlToGetData, options);
     }else if(options.dataJson){
       var dataLocal = $.parseJSON(options.dataJson);
       _mountHtml(dataLocal);
@@ -24,37 +23,60 @@ $.fn.autocomplete = function(options) {
 
   });
 
-  $(_term).focusout(function(){
-    $(_god).remove();
-  });
-
   function _mountHtml(data){
 
     var god = $("<div>").appendTo(_this).addClass("box-result");
     _god = god;
 
     $.each( data, function( i, item ) {
-      var daddy = $("<div>").prependTo(_god).addClass("box-line");
+      var daddy = $("<div>").prependTo(_god).addClass("box-line").attr("href", item.link);
       var firstSon = $("<div>").prependTo(daddy).addClass("img");
       $("<img>").prependTo(firstSon).attr("src", item.img);
       var secondSon = $("<div>").appendTo(daddy).addClass("info");
       $(secondSon).html(item.name + "<span>"+item.info+"</span>");
     });
     
+    _createClick();
+    _createMouseOut();
+
     $(_god).fadeIn();
 
   }
 
-  function _getDataRemote(url){
+  function _createClick(){
 
-    $.getJSON( url )
-    .done(function( data ) {
-      _mountHtml(data);
-    })
-    .fail(function( jqxhr, textStatus, error ) {
-      var err = textStatus + ", " + error;
-      console.log( "Request Failed: " + err );
+    $(".autocomplete-custom .box-line").click(function(){
+      event.stopPropagation();
+      var href = $(this).attr("href");
+      window.location.href = href;
     });
+
+  }
+
+  function _createMouseOut(){
+
+    $(_this).on("mouseleave", function() {
+      setTimeout(function(){
+        $("div.box-result").appendTo(_this).fadeOut("slow");
+      }, 1500);
+    });
+    
+  }
+
+  function _getDataRemote(url, allOptions){
+
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: allOptions
+      ,success: function (data) {
+        $("div.box-result").appendTo(_this).remove();
+        _mountHtml(data);
+      },error: function (jqxhr, textStatus, error) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+      }
+    }, "json");
 
   }
 
