@@ -10,10 +10,27 @@
 
     <link href="stylesheets/prism.css" rel="stylesheet" />
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- JQUERY -->
+    <script src="http://code.jquery.com/jquery-git.js"></script>
+
+    <!-- PLUGIN -->
+    <link rel="stylesheet" href="autocomplete-custom/css/autocomplete-custom.css">
+    <script src="autocomplete-custom/js/autocomplete-custom.js"></script>
+
     <title>Autocomplete-custom by Soufraz</title>
+
+    <script>
+    $(document).ready(function(){
+    
+      $("#buscaTeste").autocomplete({});
+
+    });
+    </script>
+
+    <style>
+    #buscaTeste{width: 200px; height: 25px;}
+    </style>
+
   </head>
 
   <body>
@@ -42,6 +59,17 @@
 
 <p>Este plugin surgiu com a necessidade de implementar um autocomplete customizado em um site. Com ele você pode pegar informações fornecidas em json em uma determinada url ou gerar o json em seu proprio site e passa-lo como parametro.</p>
 
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Exemplo
+</h3>
+<div id="buscaTeste">
+    <input type="text" name="term" placeholder="Digite alguma coisa..." value="" />
+</div>
+
+<br><br>
 <section id="main_content">
 <h3>
   <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
@@ -66,8 +94,8 @@
 
 <br>
 <p>E não esqueça de adicionar os arquivos da biblioteca em sua página:</p>
-<pre><code class="language-css">&lt;script src="js/autocomplete-custom.js"></script>
-&lt;link rel="stylesheet" href="css/autocomplete-custom.css">
+<pre><code class="language-css">&lt;script src="js/autocomplete-custom.js" /></script>
+&lt;link rel="stylesheet" href="css/autocomplete-custom.css" />
 </code></pre>
 
 <br><br>

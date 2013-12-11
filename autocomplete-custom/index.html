@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Autocomplete Custom</title>
+	<!-- Jquery -->
+	<script src="http://code.jquery.com/jquery-git.js"></script>
+
+	<!-- Autcomplete Custom -->
+	<script src="js/autocomplete-custom.js"></script>
+	<link rel="stylesheet" href="css/autocomplete-custom.css">
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		$( "#autocomplete" ).autocomplete({ 
+		//urlToGetData: 'http://www.rafaelfrazao.com.br/apps/autocomplete/autocomplete-data.php'
+	});
+
+	});	
+	</script>
+</head>
+<body>
+
+	<div id="autocomplete">
+		<input type="text" name="term" placeholder="Find here.."
+		value="" />
+	</div>
+
+</body>
+</html>
