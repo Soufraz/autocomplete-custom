@@ -1,4 +1,4 @@
-var exampleData = '[{"id":10,"img":"img\/gates.jpg","name":"Bill Gates","info":"Microsoft"},{"id":20,"img":"img\/jobs.jpg","name":"Steve Jobs","info":"Apple"},{"id":30,"img":"img\/larry.jpg","name":"Larry Page","info":"Google"},{"id":40,"img":"img\/mark.jpg","name":"Mark Zuckerberg","info":"Facebook"},{"id":50,"img":"img\/robert.jpg","name":"Robert Downey Jr","info":"Iron Man"},{"id":60,"img":"img\/eike.jpg","name":"Eike Batista","info":"Falling"}]';
+var exampleData = '[{"id":10,"img":"img\/gates.jpg","name":"Bill Gates","info":"Microsoft","link":"http://goo.gl/j7o3Ve"},{"id":20,"img":"img\/jobs.jpg","name":"Steve Jobs","info":"Apple","link":"http://goo.gl/j7o3Ve"},{"id":30,"img":"img\/larry.jpg","name":"Larry Page","info":"Google","link":"http://goo.gl/j7o3Ve"},{"id":40,"img":"img\/mark.jpg","name":"Mark Zuckerberg","info":"Facebook","link":"http://goo.gl/j7o3Ve"},{"id":50,"img":"img\/robert.jpg","name":"Robert Downey Jr","info":"Iron Man","link":"http://goo.gl/j7o3Ve"},{"id":60,"img":"img\/eike.jpg","name":"Eike Batista","info":"Falling","link":"http://goo.gl/j7o3Ve"}]';
 
 $.fn.autocomplete = function(options) {
 
