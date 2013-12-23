@@ -7,8 +7,8 @@ $.fn.autocomplete = function(options) {
   var _god      = null //Main div
   var _term     = $(_this).find("input[name=term]"); //Field search
   var _limit    = (options.limit) ? options.limit : 10; //Limit list
-  var _showImg  = (options.showImg == true) ? true : false; //Allow viewer of img
-  var _showInfo = (options.showInfo == true) ? true : false; //Allow viewer of info
+  var _showImg  = (options.showImg == false) ? false : true; //Allow viewer of img
+  var _showInfo = (options.showInfo == false) ? false : true; //Allow viewer of info
 
   $(_this).addClass("autocomplete-custom"); //Add style to this element
 
