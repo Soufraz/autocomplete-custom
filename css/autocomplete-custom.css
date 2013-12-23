@@ -12,9 +12,9 @@
 .autocomplete-custom .box-result{
   width: 100%; 
   position: relative;
-   display: block; 
+  display: block; 
   z-index: 1000;
-  float: left;
+  /*float: left;*/
 }
 .autocomplete-custom .box-result .box-line{
   width: 100%; 
@@ -32,8 +32,8 @@
   cursor: pointer;
 }
 .autocomplete-custom .box-result .box-line .img{
-  width: 20%;
-  margin-right:5%;
+  display: block;
+  margin-right:10px;
   float:left;
 }
 .autocomplete-custom .box-result .box-line .img img{
