@@ -1,29 +1,174 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Autocomplete Custom</title>
-	<!-- Jquery -->
-	<script src="http://code.jquery.com/jquery-git.js"></script>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <!-- <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" /> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-	<!-- Autcomplete Custom -->
-	<script src="js/autocomplete-custom.js"></script>
-	<link rel="stylesheet" href="css/autocomplete-custom.css">
+    <link href="stylesheets/prism.css" rel="stylesheet" />
 
-	<script type="text/javascript">
-	$(document).ready(function(){
+    <!-- JQUERY -->
+    <script src="http://code.jquery.com/jquery-git.js"></script>
 
-		$( "#autocomplete" ).autocomplete({ 
-		//urlToGetData: 'http://www.rafaelfrazao.com.br/apps/autocomplete/autocomplete-data.php'
-	});
+    <!-- PLUGIN -->
+    <link rel="stylesheet" href="autocomplete-custom/css/autocomplete-custom.css">
+    <script src="autocomplete-custom/js/autocomplete-custom.js"></script>
 
-	});	
-	</script>
-</head>
-<body>
+    <title>Autocomplete-custom by Soufraz</title>
 
-	<div id="autocomplete">
-		<input type="text" name="term" placeholder="Find here.."
-		value="" />
-	</div>
+    <script>
+    $(document).ready(function(){
+    
+      $("#searchTop").autocomplete({});
 
-</body>
+    });
+    </script>
+
+    <style>
+    #searchTop{width: 200px; height: 25px;}
+    .alert-text{font-style: italic!important; color: red; font-size: 12px;}
+    </style>
+
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Autocomplete-custom</h1>
+          <h2></h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Soufraz/autocomplete-custom/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/Soufraz/autocomplete-custom/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/Soufraz/autocomplete-custom" id="view-on-github" class="button"><span>Ver no GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+            <span class="octicon octicon-link"></span></a>
+            Welcome!
+          </h3>
+
+<p>This plugin came with the need to implement a custom autocomplete on a website. With it you can pick up information provided in json in a given url or json generate on your own site and passes it as a parameter.</p>
+
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Example
+</h3>
+<div id="searchTop">
+    <input type="text" name="term" placeholder="Tape something..." value="" />
+</div>
+
+<br><br>
+<section id="main_content">
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  How to use (basic way)
+</h3>
+
+<p><strong>* Dependencies:</strong> JQuery (preferably the latest version)</p>
+
+<p>In your file html:</p>
+<pre><code class="language-markup">&lt;div id="searchTop">
+    &lt;input type="text" name="term" placeholder="Find friends..." value="" />
+&lt;/div>
+</code></pre>
+
+<br>
+<p>On the tag script:</p>
+<pre><code class="language-css">$( "#searchTop" ).autocomplete({
+  //See the settings below
+});
+</code></pre>
+
+<br>
+<p>And do not forget to add the library files into your page:</p>
+<pre><code class="language-css">&lt;script src="js/autocomplete-custom.js" /></script>
+&lt;link rel="stylesheet" href="css/autocomplete-custom.css" />
+</code></pre>
+
+<br><br>
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Settings
+</h3>
+
+<p>
+  <span class="alert-text">* If <strong>urlToGetData</strong> and <strong>dataJson</strong> are not set, will be shown an example data.</span><br>
+  <strong>urlToGetData (string):</strong> Url to consume data and mount the result.<br>
+  <strong>dataJson (string):</strong> Json generated locally to mount the result.<br>
+  <strong>limit (int):</strong> Number of items listed in the result. Default is 10.<br>
+  <strong>showImg (bool):</strong> Allows visualization of images. Default is true.<br>
+  <strong>showInfo (bool):</strong>  Allows visualization of information. Default is true.
+</p>
+
+<br>
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Standard ajax code
+</h3>
+  <p>Any content sent to or consumed by the plugin, need to follow the following pattern:</p>
+  <pre><code class="language-php">$content[] = array(
+  "id"  => 10,
+  "img" => "path/to/image.jpg",
+  "name"=> "Name 1",
+  "info"=> "Extra info 1"
+);
+$content[] = array(
+  "id"  => 11,
+  "img" => "path/to/image.jpg",
+  "name"=> "Name 2",
+  "info"=> "Extra info 2"
+);
+
+echo json_encode($content);
+
+//The result is
+[{"id":10,"img":"path\/to\/image.jpg","name":"Name 1","info":"Extra info 1"},{"id":11,"img":"path\/to\/image.jpg","name":"Name 2","info":"Extra info 2"}]</code></pre>
+<br>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors">
+  <span class="octicon octicon-link"></span>
+</a>Authors and Contributors
+</h3>
+
+<p>
+<a href="http://lmgtfy.com/?q=Rafael+Soufraz" target="blank">@RafaelSoufraz</a>
+<br>Want to contribute to the project? Feel free! I am just beginning and I need help. :)<br>  
+Send me an email and we will talk. <strong>contato@rafaelfrazao.com.br</strong></p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Found a bug? Please notify me. <strong>contato@rafaelfrazao.com.br</strong>
+<br>I will be extremely grateful.</p>
+</section>
+
+        <footer>
+          Autocomplete-custom is maintained by <a href="https://github.com/Soufraz">Soufraz</a>
+        </footer>
+
+        
+      </div>
+    </div>
+
+    <script src="javascripts/prism.js"></script>
+  </body>
 </html>
