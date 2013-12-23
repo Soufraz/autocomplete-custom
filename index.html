@@ -22,13 +22,14 @@
     <script>
     $(document).ready(function(){
     
-      $("#buscaTeste").autocomplete({});
+      $("#searchTop").autocomplete({});
 
     });
     </script>
 
     <style>
-    #buscaTeste{width: 200px; height: 25px;}
+    #searchTop{width: 200px; height: 25px;}
+    .alert-text{font-style: italic!important; color: red; font-size: 12px;}
     </style>
 
   </head>
@@ -65,7 +66,7 @@
   <span class="octicon octicon-link"></span></a>
   Example
 </h3>
-<div id="buscaTeste">
+<div id="searchTop">
     <input type="text" name="term" placeholder="Tape something..." value="" />
 </div>
 
@@ -80,15 +81,15 @@
 <p><strong>* Dependencies:</strong> JQuery (preferably the latest version)</p>
 
 <p>In your file html:</p>
-<pre><code class="language-markup">&lt;div id="buscaTopo">
+<pre><code class="language-markup">&lt;div id="searchTop">
     &lt;input type="text" name="term" placeholder="Find friends..." value="" />
 &lt;/div>
 </code></pre>
 
 <br>
 <p>On the tag script:</p>
-<pre><code class="language-css">$( "#buscaTopo" ).autocomplete({
-  //Soon documentation explaining how best to exploit the parameters
+<pre><code class="language-css">$( "#searchTop" ).autocomplete({
+  //See the settings below
 });
 </code></pre>
 
@@ -99,6 +100,49 @@
 </code></pre>
 
 <br><br>
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Settings
+</h3>
+
+<p>
+  <span class="alert-text">* If <strong>urlToGetData</strong> and <strong>dataJson</strong> are not set, will be shown an example data.</span><br>
+  <strong>urlToGetData (string):</strong> Url to consume data and mount the result.<br>
+  <strong>dataJson (string):</strong> Json generated locally to mount the result.<br>
+  <strong>limit (int):</strong> Number of items listed in the result. Default is 10.<br>
+  <strong>showImg (bool):</strong> Allows visualization of images. Default is true.<br>
+  <strong>showInfo (bool):</strong>  Allows visualization of information. Default is true.
+</p>
+
+<br>
+
+<h3>
+  <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+  <span class="octicon octicon-link"></span></a>
+  Standard ajax code
+</h3>
+  <p>Any content sent to or consumed by the plugin, need to follow the following pattern:</p>
+  <pre><code class="language-php">$content[] = array(
+  "id"  => 10,
+  "img" => "path/to/image.jpg",
+  "name"=> "Name 1",
+  "info"=> "Extra info 1"
+);
+$content[] = array(
+  "id"  => 11,
+  "img" => "path/to/image.jpg",
+  "name"=> "Name 2",
+  "info"=> "Extra info 2"
+);
+
+echo json_encode($content);
+
+//The result is
+[{"id":10,"img":"path\/to\/image.jpg","name":"Name 1","info":"Extra info 1"},{"id":11,"img":"path\/to\/image.jpg","name":"Name 2","info":"Extra info 2"}]</code></pre>
+<br>
+
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors">
   <span class="octicon octicon-link"></span>
