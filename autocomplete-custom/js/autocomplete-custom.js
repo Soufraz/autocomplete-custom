@@ -1,4 +1,4 @@
-var exampleData = '[{"id":10,"img":"img\/gates.jpg","name":"Bill Gates","info":"Microsoft"},{"id":20,"img":"img\/jobs.jpg","name":"Steve Jobs","info":"Apple"},{"id":30,"img":"img\/larry.jpg","name":"Larry Page","info":"Google"},{"id":40,"img":"img\/mark.jpg","name":"Mark Zuckerberg","info":"Facebook"},{"id":50,"img":"img\/robert.jpg","name":"Robert Downey Jr","info":"Iron Man"},{"id":60,"img":"img\/eike.jpg","name":"Eike Batista","info":"Falling"}]';
+var exampleData = '[{"id":10,"img":"autocomplete-custom\/img\/gates.jpg","name":"Bill Gates","info":"Microsoft"},{"id":20,"img":"autocomplete-custom\/img\/jobs.jpg","name":"Steve Jobs","info":"Apple"},{"id":30,"img":"autocomplete-custom\/img\/larry.jpg","name":"Larry Page","info":"Google"},{"id":40,"img":"autocomplete-custom\/img\/mark.jpg","name":"Mark Zuckerberg","info":"Facebook"},{"id":50,"img":"autocomplete-custom\/img\/robert.jpg","name":"Robert Downey Jr","info":"Iron Man"},{"id":60,"img":"autocomplete-custom\/img\/eike.jpg","name":"Eike Batista","info":"Falling"}]';
 
 $.fn.autocomplete = function(options) {
 
