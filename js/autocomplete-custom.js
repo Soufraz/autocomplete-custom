@@ -2,12 +2,17 @@ var exampleData = '[{"id":10,"img":"img\/gates.jpg","name":"Bill Gates","info":"
 
 $.fn.autocomplete = function(options) {
 
-  var _this = this; //This element
-  var _god  = null; //Main div
-  var _term = $(_this).find("input[name=term]"); //Field search
+  var _debug    = false; //Dont close result
+  var _this     = this; //This element
+  var _god      = null //Main div
+  var _term     = $(_this).find("input[name=term]"); //Field search
+  var _limit    = (options.limit) ? options.limit : 10; //Limit list
+  var _showImg  = (options.showImg == true) ? true : false; //Allow viewer of img
+  var _showInfo = (options.showInfo == true) ? true : false; //Allow viewer of info
 
   $(_this).addClass("autocomplete-custom"); //Add style to this element
 
+  //When something is typed
   $(_term).keyup(function(){
 
     if(options.urlToGetData){
@@ -17,33 +22,48 @@ $.fn.autocomplete = function(options) {
       var dataLocal = $.parseJSON(options.dataJson);
       _mountHtml(dataLocal);
     }else{
-      var dataExample = $.parseJSON(exampleData);
+       var dataExample = $.parseJSON(exampleData);
       _mountHtml(dataExample);
     }
 
   });
 
+  //Render html
   function _mountHtml(data){
 
     var god = $("<div>").appendTo(_this).addClass("box-result");
     _god = god;
 
+    var limit = 0;
     $.each( data, function( i, item ) {
+
+      if(limit >= _limit) return false;
+
       var daddy = $("<div>").prependTo(_god).addClass("box-line").attr("href", item.link);
-      var firstSon = $("<div>").prependTo(daddy).addClass("img");
-      $("<img>").prependTo(firstSon).attr("src", item.img);
+      if(_showImg == true){
+        var firstSon = $("<div>").prependTo(daddy).addClass("img");
+        $("<img>").prependTo(firstSon).attr("src", item.img);
+      }
       var secondSon = $("<div>").appendTo(daddy).addClass("info");
-      $(secondSon).html(item.name + "<span>"+item.info+"</span>");
+      if(_showInfo == true){
+        $(secondSon).html(item.name + "<span>"+item.info+"</span>");
+      }else{
+        $(secondSon).html(item.name);
+      }
+
+      limit++;
+
     });
     
-    _createClick();
-    _createMouseOut();
+    _createClickItem();
+    _createClickOut();
 
-    $(_god).fadeIn();
+    $(_god).show();
 
   }
 
-  function _createClick(){
+  //Create click of each result
+  function _createClickItem(){
 
     $(".autocomplete-custom .box-line").click(function(){
       event.stopPropagation();
@@ -53,12 +73,19 @@ $.fn.autocomplete = function(options) {
 
   }
 
-  function _createMouseOut(){
+  //Create action to close the list result
+  function _createClickOut(){
 
-    $(_this).on("mouseleave", function() {
-      setTimeout(function(){
-        $("div.box-result").appendTo(_this).fadeOut("slow");
-      }, 1500);
+    $('html').click(function() {
+
+      if($(_this).find("div.box-result").html()){
+        setTimeout(function(){
+          $(_this).find("div.box-result").fadeOut('slow', function() {
+            if(_debug == false) $(_this).find("div.box-result").remove();
+          });
+        }, 1500);
+      }
+
     });
     
   }
